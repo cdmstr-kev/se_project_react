@@ -33,6 +33,13 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      // Disable prop-types validation.
+      "react/prop-types": 0,
     },
+    overrides: [
+    {
+      files: ["*.js", "*.jsx"],
+    },
+  ],
   },
 ]
