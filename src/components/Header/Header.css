@@ -1,56 +1,56 @@
 .header__content {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 32px 0 28px
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 32px 0 28px;
 }
 
 .header__content-left {
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
 }
 
 .header__content-right {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
 }
 
 .header__date-location {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /* change the font here. */
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0;
-    margin: 0;
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0;
+  margin: 0;
 }
 
 .header__button {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /* change the font here. */
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0;
-    text-decoration: none;
-    border: none;
-    background-color: transparent;
-    color: #000;
-    margin-right: 6px;
-    padding: 0;
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  color: #000;
+  margin-right: 6px;
+  padding: 0;
 }
 
 .header__username {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /* change the font here. */
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 100%;
-    letter-spacing: 0;
-    margin: 0;
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0;
+  margin: 0;
 }
 
 .header__avatar {
-    /* align-self: center; */
+  /* align-self: center; */
 }
