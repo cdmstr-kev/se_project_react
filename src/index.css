@@ -3,4 +3,5 @@
 @import './components/Main/Main.css';
 @import './components/WeatherCard/WeatherCard.css';
 @import './vendor/font.css';
+@import './components/ItemCard/ItemCard.css';
 
