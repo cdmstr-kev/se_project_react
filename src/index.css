@@ -1,7 +1,9 @@
 @import './vendor/normalize.css';
+@import './vendor/font.css';
 @import './components/Header/Header.css';
 @import './components/Main/Main.css';
 @import './components/WeatherCard/WeatherCard.css';
-@import './vendor/font.css';
 @import './components/ItemCard/ItemCard.css';
+@import './components/Footer/Footer.css';
+
 

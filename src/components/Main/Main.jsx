@@ -8,13 +8,15 @@ export default function Main({ weatherData }) {
         <WeatherCard />
         <section className="cards">
           <p className="cards__text">Today is 75°F / you may want to wear:</p>
-          {defaultClothingItems
-        //   .filter((item) => {
-        //     return item.weather === weatherData.type
-        //   })
-          .map((item) => (
-            <ItemCard key={item._id} item={item} />
-          ))}
+          <ul className="cards__list">
+            {defaultClothingItems
+          //   .filter((item) => {
+          //     return item.weather === weatherData.type
+          //   })
+            .map((item) => (
+              <ItemCard key={item._id} item={item} />
+            ))}
+          </ul>
         </section>
     </main>
   );
