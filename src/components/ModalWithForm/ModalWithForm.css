@@ -21,7 +21,7 @@
   transition: visibility 0s linear 0s, opacity 0.5s linear;
 }
 
-.modal__form {
+.modal__content {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
@@ -136,7 +136,6 @@
 .modal__submit-button:hover {
   cursor: pointer;
   background: rgba(0, 0, 0, 0.6);
-
 }
 
 .modal__button_disabled {

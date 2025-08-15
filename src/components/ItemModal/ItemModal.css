@@ -1,0 +1,41 @@
+.modal__content_type_image {
+  padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal__close-button_type_preview {
+  top: 24px;
+  right: 24px;
+}
+
+.modal__image {
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
+
+.modal__footer {
+  margin: 20px 0 0 32px;
+  padding: 0 0 32px;
+}
+
+.modal__caption {
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0;
+  margin: 0 0 12px;
+}
+
+.modal__weather {
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0;
+  margin: 0;
+}

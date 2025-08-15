@@ -1,9 +1,14 @@
 
-export default function ItemCard({ item }) {
+export default function ItemCard({ item, onCardClick }) {
+
+  const handleClick = () => {
+    onCardClick(item);
+  };
+
   return (
     <li className="card">
       <p className="card__text">{item.name}</p>
-      <img className="card__image" src={item.link} alt={item.name} />
+      <img onClick={handleClick} className="card__image" src={item.link} alt={item.name} />
     </li>
   );
 }
