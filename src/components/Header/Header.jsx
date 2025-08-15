@@ -1,13 +1,20 @@
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 
-export default function Header({ onAddClothingClick }) {
+export default function Header({ onAddClothingClick, weatherData }) {
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <header className="header">
       <div className="header__content">
         <div className="header__content-left">
           <img className="header__logo" src={logo} alt="Logo" />
-          <p className="header__date-location">June 15, New York</p>
+          <p className="header__date-location">
+            {currentDate}, {weatherData.city}
+          </p>
         </div>
         <div className="header__content-right">
           <button
