@@ -18,7 +18,10 @@ function App() {
     type: "",
     temp: { F: 999 },
     city: "",
+    condition: "",
+    isDay: true,
   });
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
 
@@ -34,12 +37,12 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
-
   useEffect(() => {
     getWeatherForecast(coordinates, APIkey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+        // debugger;
       })
       .catch(console.error);
   }, []);
