@@ -1,5 +1,5 @@
 .modal {
-  /* visibility: hidden; */
+  visibility: hidden;
   position: fixed;
   top: 0;
   right: 0;
@@ -11,8 +11,14 @@
   padding: 0 10px;
   background: rgba(0, 0, 0, 0.3);
 
-  /* opacity: 0; */
-  /* transition: visibility 0s linear 0.5s, opacity 0.5s linear; */
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+}
+
+.modal__is-open {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 0.5s linear;
 }
 
 .modal__form {

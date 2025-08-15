@@ -5,7 +5,7 @@ export default function Footer() {
         Developed by Kevin Nedd
       </p>
       <p className="footer__text">
-        2023
+        2025
       </p>
     </footer>
   );

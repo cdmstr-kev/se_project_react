@@ -1,7 +1,7 @@
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 
-export default function Header() {
+export default function Header({ onAddClothingClick }) {
   return (
     <header className="header">
       <div className="header__content">
@@ -10,7 +10,13 @@ export default function Header() {
           <p className="header__date-location">June 15, New York</p>
         </div>
         <div className="header__content-right">
-          <button className="header__button">+ Add Clothes</button>
+          <button
+            type="button"
+            className="header__button"
+            onClick={onAddClothingClick}
+          >
+            + Add Clothes
+          </button>
           <p className="header__username">Terrence Tegegne</p>
           <img className="header__avatar" src={avatar} alt="Profile" />
         </div>

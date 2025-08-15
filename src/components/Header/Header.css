@@ -42,6 +42,11 @@
   padding: 0;
 }
 
+.header__button:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 .header__username {
   font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
   font-size: 20px;
@@ -50,5 +55,3 @@
   letter-spacing: 0;
   margin: 0;
 }
-
-
