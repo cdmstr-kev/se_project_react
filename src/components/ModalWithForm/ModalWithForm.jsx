@@ -1,4 +1,5 @@
 import closeButton from "../../assets/closeButton.svg";
+import "./ModalWithForm.css";
 
 export default function ModalWithForm({
   children,

@@ -1,4 +1,5 @@
 import closeButton from "../../assets/closeButton.svg";
+import "./ItemModal.css";
 
 export function ItemModal({
   activeModal,

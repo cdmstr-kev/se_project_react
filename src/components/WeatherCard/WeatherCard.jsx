@@ -1,3 +1,4 @@
+import "./WeatherCard.css";
 import { weatherOptions, defaultOptions } from "../../utils/constants.js";
 
 export default function WeatherCard({ weatherData }) {
