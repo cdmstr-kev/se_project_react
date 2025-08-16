@@ -61,3 +61,8 @@ WTWR is a responsive web application that combines weather forecasting with prac
 ## 🌍 Live Demo
 
 [View the application](https://cdmstr-kev.github.io/se_project_react/)
+
+
+![image.png](image.png)
+
+![image.png](image%201.png)
