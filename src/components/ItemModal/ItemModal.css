@@ -7,7 +7,9 @@
 .modal__close-button_type_preview {
   top: 24px;
   right: 24px;
+  background-color: transparent;
 }
+
 
 .modal__image {
   max-width: 80vw;

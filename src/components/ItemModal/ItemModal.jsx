@@ -1,4 +1,4 @@
-import closeButton from "../../assets/images/closeButton.svg";
+import closeButton from "../../assets/images/closeButtonTypePreview.svg";
 import "./ItemModal.css";
 
 export function ItemModal({

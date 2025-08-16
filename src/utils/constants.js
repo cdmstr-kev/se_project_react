@@ -26,7 +26,7 @@ export const weatherOptions = [
   },
   {
     day: true,
-    condition: "storm",
+    condition: "Thunderstorm",
     url: new URL("../assets/images/day/storm.svg", import.meta.url).href,
   },
   {
@@ -56,8 +56,8 @@ export const weatherOptions = [
   },
   {
     day: false,
-    condition: "storm",
-    url: new URL("../assets/images/night/storm.svg", import.meta.url).href,
+    condition: "Thunderstorm",
+    url: new URL("../assets/images/night/Thunderstorm.svg", import.meta.url).href,
   },
 ];
 
@@ -110,8 +110,8 @@ export const defaultClothingItems = [
 ];
 
 export const coordinates = {
-  latitude: 40.7128,
-  longitude: -74.006,
+  latitude: 55.755,
+  longitude: 37.617,
 };
 
-export const APIkey = "5a6d623bec820e1c9494632bad022117";
+export const APIKey = "5a6d623bec820e1c9494632bad022117";
