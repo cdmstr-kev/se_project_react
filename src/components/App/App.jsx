@@ -7,6 +7,7 @@ import Main from "../Main/Main.jsx";
 import Footer from "../Footer/Footer.jsx";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import { ItemModal } from "../ItemModal/ItemModal.jsx";
+import { defaultClothingItems } from "../../utils/constants.js";
 import {
   getWeatherForecast,
   filterWeatherData,
@@ -24,6 +25,7 @@ function App() {
 
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
   const handleAddClothingClick = () => {
     setActiveModal("add-clothing");
@@ -54,7 +56,12 @@ function App() {
             onAddClothingClick={handleAddClothingClick}
             weatherData={weatherData}
           />
-          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+          <Main
+            clothingItems={clothingItems}
+            setClothingItems={setClothingItems}
+            weatherData={weatherData}
+            handleCardClick={handleCardClick}
+          />
           <Footer />
         </div>
         <ModalWithForm
@@ -99,7 +106,8 @@ function App() {
                 id="hot"
                 className="modal__input"
                 type="radio"
-                name="hot"
+                name="weather"
+                value="hot"
                 required
               />
               Hot
@@ -109,7 +117,8 @@ function App() {
                 id="warm"
                 className="modal__input"
                 type="radio"
-                name="warm"
+                name="weather"
+                value="warm"
                 required
               />
               Warm
@@ -119,7 +128,8 @@ function App() {
                 id="cold"
                 className="modal__input"
                 type="radio"
-                name="cold"
+                name="weather"
+                value="cold"
                 required
               />
               Cold

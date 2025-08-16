@@ -1,5 +1,3 @@
-# React + Vite
-
 # WTWR (What to Wear?) React Weather App
 
 A React-based weather application that provides clothing recommendations based on current weather conditions. The app fetches real-time weather data and displays appropriate clothing suggestions to help users dress for the weather.
@@ -64,6 +62,6 @@ WTWR is a responsive web application that combines weather forecasting with prac
 
 ### Screenshots
 
-![alt text](<src/assets/Screenshot 2025-08-16 at 15.16.59.png>)
-![alt text](<src/assets/Screenshot 2025-08-16 at 15.17.11.png>)
-![alt text](<src/assets/Screenshot 2025-08-16 at 15.21.55.png>)
+![alt text](<src/assets/images/Screenshot 2025-08-16 at 15.16.59.png>)
+![alt text](<src/assets/images/Screenshot 2025-08-16 at 15.17.11.png>)
+![alt text](<src/assets/images/Screenshot 2025-08-16 at 15.21.55.png>)
