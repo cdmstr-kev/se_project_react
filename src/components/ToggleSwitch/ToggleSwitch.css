@@ -39,21 +39,24 @@
 
 .toggle-switch__text_f {
     left: 10px;
-    color: #fff;
 }
 
 .toggle-switch__text_c {
     right: 10px;
 }
 
+.toggle-switch__text_color_white {
+    color: #fff;
+}
+
 .toggle-switch__checkbox:checked ~ .toggle-switch__circle {
     left: 28px;
 }
 
-.toggle-switch__checkbox:checked ~ .toggle-switch__text_f {
+/* .toggle-switch__checkbox:checked ~ .toggle-switch__text_f {
     color: #00000080;
 }
 
 .toggle-switch__checkbox:checked ~ .toggle-switch__text_c {    
     color: #fff;
-}   
+}    */

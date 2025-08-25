@@ -13,6 +13,7 @@ import {
   filterWeatherData,
 } from "../../utils/weatherapi.js";
 import { coordinates, APIKey } from "../../utils/constants.js";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -26,6 +27,11 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
+
+  const handleToggleSwitchChange = (e) => {
+    setCurrentTemperatureUnit(e.target.checked ? 'C' : 'F');
+  }
 
   const handleAddClothingClick = () => {
     setActiveModal("add-clothing");
@@ -49,6 +55,7 @@ function App() {
   }, []);
 
   return (
+    <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange}}>
     <div className="app">
       <div className="app__content">
         <Header
@@ -141,6 +148,7 @@ function App() {
         handleCloseActiveModal={handleCloseActiveModal}
       />
     </div>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 
