@@ -1,6 +1,7 @@
 import "./Header.css";
 import logo from "../../assets/images/logo.svg";
 import avatar from "../../assets/images/avatar.png";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 
 export default function Header({ onAddClothingClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -18,6 +19,7 @@ export default function Header({ onAddClothingClick, weatherData }) {
           </p>
         </div>
         <div className="header__content-right">
+          <ToggleSwitch />
           <button
             type="button"
             className="header__button"
