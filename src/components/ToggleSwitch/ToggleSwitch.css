@@ -52,11 +52,3 @@
 .toggle-switch__checkbox:checked ~ .toggle-switch__circle {
     left: 28px;
 }
-
-/* .toggle-switch__checkbox:checked ~ .toggle-switch__text_f {
-    color: #00000080;
-}
-
-.toggle-switch__checkbox:checked ~ .toggle-switch__text_c {    
-    color: #fff;
-}    */
