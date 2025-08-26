@@ -40,15 +40,9 @@ function App() {
     setActiveModal("add-clothing");
   };
 
-  const handleAddItemSubmit = (e) => {
-    e.preventDefault();
-    const newItem = {
-      name: e.target.name.value,
-      image: e.target.image.value,
-      weather: e.target.weather.value,
-    };
+  const handleAddItemSubmit = (newItem) => {
 
-    setClothingItems([...clothingItems, newItem]);
+    setClothingItems([newItem, ...clothingItems]);
     setActiveModal("");
   };
 

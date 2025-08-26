@@ -1,17 +1,28 @@
+import { useForm } from "../../hooks/useForm.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
-const AddItemModal = ({
-  isOpen,
-  onAddItem,
-  handleCloseActiveModal,
-  buttonText,
-}) => {
+const AddItemModal = ({ isOpen, onAddItem, handleCloseActiveModal }) => {
+
+  const defaultValues = {
+    name: "",
+    link: "",
+    weather: "",
+  };
+
+  const { values, handleChange } = useForm(
+    defaultValues
+  );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAddItem(values);
+  };
 
   return (
     <ModalWithForm
-      buttonText="Add garment" 
+      buttonText="Add garment"
       title="New garment"
       handleCloseActiveModal={handleCloseActiveModal}
-      onSubmit={onAddItem}
+      onSubmit={handleSubmit}
       name="add-clothing"
       isOpen={isOpen}
     >
@@ -25,18 +36,22 @@ const AddItemModal = ({
             name="name"
             placeholder="Name"
             required
+            value={values.name}
+            onChange={handleChange}
           />
         </label>
       </fieldset>
 
       <fieldset className="modal__fieldset">
-        <label htmlFor="image" className="modal__label">
+        <label htmlFor="link" className="modal__label">
           Image
           <input
-            id="image"
+            id="link"
             className="modal__input"
             type="url"
-            name="image"
+            name="link"
+            value={values.link}
+            onChange={handleChange}
             placeholder="Image URL"
             required
           />
@@ -53,7 +68,9 @@ const AddItemModal = ({
             type="radio"
             name="weather"
             value="hot"
+            checked={values.weather === "hot"}
             required
+            onChange={handleChange}
           />
           Hot
         </label>
@@ -64,7 +81,9 @@ const AddItemModal = ({
             type="radio"
             name="weather"
             value="warm"
+            checked={values.weather === "warm"}
             required
+            onChange={handleChange}
           />
           Warm
         </label>
@@ -75,7 +94,9 @@ const AddItemModal = ({
             type="radio"
             name="weather"
             value="cold"
+            checked={values.weather === "cold"}
             required
+            onChange={handleChange}
           />
           Cold
         </label>

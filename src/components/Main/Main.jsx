@@ -6,7 +6,6 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 
 export default function Main({
   clothingItems,
-  setClothingItems,
   weatherData,
   handleCardClick,
 }) {
