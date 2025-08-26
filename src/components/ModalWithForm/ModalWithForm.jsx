@@ -5,21 +5,23 @@ export default function ModalWithForm({
   children,
   buttonText,
   title,
-  activeModal,
+  name,
+  isOpen,
   handleCloseActiveModal,
+  onSubmit,
 }) {
   return (
     <div
       className={`modal ${
-        activeModal === "add-clothing" ? "modal__is-open" : ""
-      }`}
+        isOpen ? "modal__is-open" : ""
+      } modal__type_${name}`}
     >
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button className="modal__close-button" type="button" onClick={handleCloseActiveModal}>
           <img src={closeButton} alt="Close" />
         </button>
-        <form className="modal__form">
+        <form className="modal__form" onSubmit={onSubmit}>
           {children}
           <button className="modal__submit-button" type="submit">
             {buttonText}
