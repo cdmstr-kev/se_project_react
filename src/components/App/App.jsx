@@ -7,15 +7,15 @@ import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import Footer from "../Footer/Footer.jsx";
 import Profile from "../Profile/Profile.jsx";
-import { ItemModal } from "../ItemModal/ItemModal.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
-import { defaultClothingItems } from "../../utils/constants.js";
+import { ItemModal } from "../ItemModal/ItemModal.jsx";
 import {
   getWeatherForecast,
   filterWeatherData,
 } from "../../utils/weatherapi.js";
 import { coordinates, APIKey } from "../../utils/constants.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.js";
+import { getItems, addItem, deleteItem } from "../../utils/api.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -28,7 +28,7 @@ function App() {
 
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = (e) => {
@@ -42,8 +42,22 @@ function App() {
   };
 
   const handleAddItemSubmit = (newItem) => {
-    setClothingItems([newItem, ...clothingItems]);
-    setActiveModal("");
+    return addItem(newItem)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
+        setActiveModal("");
+      })
+      .catch((error) => {
+        console.error("Failed to add item:", error);
+      });
+  };
+
+  const handleDeleteItem = (item) => {
+    deleteItem(item._id).then(() => {
+      setClothingItems(clothingItems.filter((i) => i._id !== item._id));
+      setActiveModal("");
+      console.log("Item deleted successfully");
+    });
   };
 
   const handleCloseActiveModal = () => {
@@ -54,6 +68,7 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
+
   useEffect(() => {
     getWeatherForecast(coordinates, APIKey)
       .then((data) => {
@@ -61,6 +76,16 @@ function App() {
         setWeatherData(filteredData);
       })
       .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch clothing items:", error);
+      });
   }, []);
 
   return (
@@ -87,7 +112,12 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile clothingItems={clothingItems} handleCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  handleCardClick={handleCardClick}
+                />
+              }
             />
           </Routes>
           <Footer />
@@ -101,6 +131,7 @@ function App() {
           activeModal={activeModal}
           selectedCard={selectedCard}
           handleCloseActiveModal={handleCloseActiveModal}
+          onDeleteItem={handleDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

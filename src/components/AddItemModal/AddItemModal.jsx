@@ -4,7 +4,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseActiveModal }) => {
 
   const defaultValues = {
     name: "",
-    link: "",
+    imageUrl: "",
     weather: "",
   };
 
@@ -49,8 +49,8 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseActiveModal }) => {
             id="link"
             className="modal__input"
             type="url"
-            name="link"
-            value={values.link}
+            name="imageUrl"
+            value={values.imageUrl}
             onChange={handleChange}
             placeholder="Image URL"
             required
