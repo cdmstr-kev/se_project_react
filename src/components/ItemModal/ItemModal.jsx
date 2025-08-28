@@ -31,7 +31,11 @@ export function ItemModal({
             <p className="modal__weather">Weather: {selectedCard.weather}</p>
           </div>
           <div>
-            <button onClick={() => onDeleteItem(selectedCard)}className="modal__delete-button" type="button">
+            <button
+              onClick={() => onDeleteItem(selectedCard)}
+              className="modal__delete-button"
+              type="button"
+            >
               Delete item
             </button>
           </div>

@@ -1,16 +1,13 @@
 import { useForm } from "../../hooks/useForm.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 const AddItemModal = ({ isOpen, onAddItem, handleCloseActiveModal }) => {
-
   const defaultValues = {
     name: "",
     imageUrl: "",
     weather: "",
   };
 
-  const { values, handleChange } = useForm(
-    defaultValues
-  );
+  const { values, handleChange } = useForm(defaultValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();

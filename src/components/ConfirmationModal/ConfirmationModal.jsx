@@ -12,7 +12,11 @@ const ConfirmationModal = ({
   };
 
   return (
-    <div className={`modal ${activeModal === "delete-confirmation" ? "modal__is-open" : ""}`}>
+    <div
+      className={`modal ${
+        activeModal === "delete-confirmation" ? "modal__is-open" : ""
+      }`}
+    >
       <div className="modal__content modal__content_type_confirmation">
         <button
           className="modal__close-button"
