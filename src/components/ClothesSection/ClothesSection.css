@@ -1,0 +1,27 @@
+.clothes-section__title-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.clothes-section__add-button {
+  margin: 37px 0 16px 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: #00000099;
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.clothes-section__title {
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0;
+  margin: 37px 0 16px 0;
+}

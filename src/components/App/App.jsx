@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import Footer from "../Footer/Footer.jsx";
-import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
+import Profile from "../Profile/Profile.jsx";
 import { ItemModal } from "../ItemModal/ItemModal.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 import { defaultClothingItems } from "../../utils/constants.js";
@@ -41,7 +42,6 @@ function App() {
   };
 
   const handleAddItemSubmit = (newItem) => {
-
     setClothingItems([newItem, ...clothingItems]);
     setActiveModal("");
   };
@@ -73,12 +73,23 @@ function App() {
             onAddClothingClick={handleAddClothingClick}
             weatherData={weatherData}
           />
-          <Main
-            clothingItems={clothingItems}
-            setClothingItems={setClothingItems}
-            weatherData={weatherData}
-            handleCardClick={handleCardClick}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  clothingItems={clothingItems}
+                  setClothingItems={setClothingItems}
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={<Profile clothingItems={clothingItems} handleCardClick={handleCardClick} />}
+            />
+          </Routes>
           <Footer />
         </div>
         <AddItemModal
