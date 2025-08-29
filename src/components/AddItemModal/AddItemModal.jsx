@@ -7,11 +7,17 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseActiveModal }) => {
     weather: "",
   };
 
-  const { values, handleChange } = useForm(defaultValues);
+  const { values, handleChange, resetForm } = useForm(defaultValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem(values);
+    onAddItem(values)
+    .then(() => {
+      resetForm();
+    })
+    .catch((error) => {
+      console.error("Failed to add item:", error);
+    });
   };
 
   return (
