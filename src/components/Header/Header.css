@@ -5,7 +5,6 @@
   gap: 20px;
   padding: 32px 0 28px;
   position: relative;
-
 }
 
 .header__content-left {
@@ -92,9 +91,6 @@
   .header__content {
     flex-wrap: wrap;
     justify-content: center;
-  }
-
-  .header__content {
     flex-direction: column;
     align-items: flex-start;
     padding: 20px 0 20px 0;
@@ -147,7 +143,6 @@
     font-size: 20px;
     line-height: 100%;
     letter-spacing: 0%;
-    margin: 0;
     color: #00000099;
     margin: 0 0 8px 0;
   }
