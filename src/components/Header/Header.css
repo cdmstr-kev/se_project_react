@@ -133,7 +133,7 @@
   }
 
   .header__mobile-menu-username {
-    font-family: Cabinet Grotesk;
+    font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
     font-weight: 700;
     font-size: 24px;
     line-height: 100%;
@@ -142,7 +142,7 @@
   }
 
   .header__mobile-menu-text {
-    font-family: Cabinet Grotesk;
+    font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
     font-weight: 500;
     font-size: 20px;
     line-height: 100%;
@@ -153,7 +153,7 @@
   }
 
   .header__mobile-menu-logout {
-    font-family: Cabinet Grotesk;
+    font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
     font-weight: 500;
     font-size: 20px;
     line-height: 100%;
@@ -173,7 +173,7 @@
   }
 
   header {
-    margin: 0 6xp 0 6px;
+    margin: 0 6px 0 6px;
   }
 
   .header__date-location {
