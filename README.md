@@ -4,16 +4,40 @@ A React-based weather application that provides clothing recommendations based o
 
 ## Overview
 
-WTWR is a responsive web application that combines weather forecasting with practical clothing recommendations. Users can view current weather conditions with dynamic weather icons that change based on time of day and weather conditions. The app suggests clothing items categorized by temperature ranges (hot, warm, cold) and allows users to interact with clothing items through modal interfaces.
+WTWR is a responsive web application that combines weather forecasting with practical clothing recommendations. Users can view current weather conditions with dynamic weather icons that change based on time of day and weather conditions. The app suggests clothing items categorized by temperature ranges (hot, warm, cold) and allows users to interact with clothing items through modal interfaces. Users can add new clothing items, view existing items, and delete items as needed.
 
 ## 🌟 Features
 
-- Real-time Weather Data : Fetches current weather information using OpenWeatherMap API
-- Dynamic Weather Icons : Displays different weather icons for day/night and various weather conditions
-- Clothing Recommendations : Suggests appropriate clothing items based on temperature (hot, warm, cold)
-- Responsive Design : Works seamlessly across desktop and mobile devices
-- Interactive Modals : Add new clothing items and preview existing ones
-- Temperature Display : Shows current temperature in Fahrenheit
+### Weather & Display
+
+- **Real-time Weather Data**: Fetches current weather information using OpenWeatherMap API
+- **Dynamic Weather Icons**: Displays different weather icons for day/night and various weather conditions
+- **Temperature Unit Toggle**: Switch between Fahrenheit and Celsius with an interactive toggle switch
+- **Location Display**: Shows current date and city location in the header
+- **Responsive Design**: Works seamlessly across desktop and mobile devices
+
+### Clothing Management
+
+- **Clothing Recommendations**: Suggests appropriate clothing items based on temperature (hot, warm, cold)
+- **Add New Items**: Users can add new clothing items with name, image URL, and weather category
+- **Item Preview**: Click on clothing items to view detailed information in a modal
+- **Delete Items**: Remove clothing items with confirmation modal for safety
+- **Personal Wardrobe**: Manage your clothing collection in the Profile section
+
+### User Interface
+
+- **Interactive Modals**: Multiple modal types for adding items, previewing, and confirmations
+- **Mobile Navigation**: Responsive mobile menu with hamburger icon
+- **User Profile**: Dedicated profile page with sidebar showing user information
+- **Single Page Application**: Client-side routing with React Router for seamless navigation
+- **Form Validation**: Custom form handling with validation for adding new items
+
+### Navigation & Routing
+
+- **Home Page**: Main weather display with filtered clothing recommendations
+- **Profile Page**: Personal clothing collection management
+- **Mobile-Responsive Header**: Adaptive navigation for different screen sizes
+- **Single Page Application**: Client-side routing with React Router for seamless navigation
 
 ## Technologies Used
 
@@ -21,6 +45,7 @@ WTWR is a responsive web application that combines weather forecasting with prac
 
 - **React 18.3.1** - Component-based UI framework
 - **React DOM 18.3.1** - DOM rendering for React
+- **React Router DOM 6.30.1** - Client-side routing and navigation
 
 ### Build Tools & Development
 
@@ -39,11 +64,12 @@ WTWR is a responsive web application that combines weather forecasting with prac
 ### External APIs
 
 - **OpenWeatherMap API** - Real-time weather data
+- **JSON Server** - Local API for clothing items management
 
 ### Languages & Standards
 
 - **JavaScript (ES6+)** - Modern JavaScript with modules
-- **CSS3** - Styling and responsive design
+- **CSS3** - Styling and responsive design with custom properties
 - **HTML5** - Semantic markup
 
 ### Development Features
@@ -51,6 +77,8 @@ WTWR is a responsive web application that combines weather forecasting with prac
 - **Hot Module Replacement (HMR)** - Fast development with instant updates
 - **ES Modules** - Modern module system
 - **TypeScript Support** - Type definitions for React components
+- **Custom Hooks** - Reusable form logic with useForm hook
+- **Context API** - Global state management for temperature units
 
 ### Deployment
 
@@ -59,6 +87,28 @@ WTWR is a responsive web application that combines weather forecasting with prac
 ## 🌍 Live Demo
 
 [View the application](https://cdmstr-kev.github.io/se_project_react/)
+
+## 📱 Features in Detail
+
+### Temperature Toggle
+
+Users can switch between Fahrenheit and Celsius using the interactive toggle switch in the header. The temperature display updates throughout the application.
+
+### Clothing Management
+
+- **Add Items**: Fill out a form with item name, image URL, and weather category (Hot/Warm/Cold)
+- **View Items**: Click any clothing item to see it in a detailed preview modal
+- **Delete Items**: Remove items with a confirmation dialog to prevent accidental deletions
+- **Filter by Weather**: Items are automatically filtered based on current weather conditions
+
+### Responsive Design
+
+The application adapts to different screen sizes with:
+
+- Mobile-friendly navigation menu
+- Responsive grid layouts for clothing items
+- Optimized modal displays for mobile devices
+- Adaptive header for different screen sizes
 
 ### Screenshots
 
