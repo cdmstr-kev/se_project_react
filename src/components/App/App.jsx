@@ -65,6 +65,11 @@ function App() {
     });
   };
 
+  const handleMobileMenuClick = () => {
+    console.log("Mobile menu clicked");
+    setActiveModal("header-modal");
+  };
+
   const handleCloseActiveModal = () => {
     setActiveModal("");
   };
@@ -102,6 +107,9 @@ function App() {
           <Header
             onAddClothingClick={handleAddClothingClick}
             weatherData={weatherData}
+            activeModal={activeModal}
+            handleCloseActiveModal={handleCloseActiveModal}
+            onMobileMenuClick={handleMobileMenuClick}
           />
           <Routes>
             <Route

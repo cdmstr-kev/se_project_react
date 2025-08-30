@@ -4,3 +4,27 @@
   gap: 116px;
   padding-top: 19px;
 }
+
+@media screen and (max-width: 768px) {
+  .profile {
+    padding-top: 0px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .clothes-section__title-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .profile .clothes-section__title {
+    margin-top: 0px;
+  }
+
+  .profile .clothes-section__add-button {
+    margin-top: 0px;
+  }
+}
