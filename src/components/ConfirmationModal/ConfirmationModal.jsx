@@ -1,4 +1,4 @@
-import closeButton from "../../assets/images/closebutton.svg";
+import closeButton from "../../assets/images/closeButton.svg";
 import "./ConfirmationModal.css";
 
 const ConfirmationModal = ({

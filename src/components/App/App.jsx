@@ -66,7 +66,6 @@ function App() {
   };
 
   const handleMobileMenuClick = () => {
-    console.log("Mobile menu clicked");
     setActiveModal("header-modal");
   };
 

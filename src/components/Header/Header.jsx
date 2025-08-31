@@ -3,6 +3,7 @@ import "./Header.css";
 import logo from "../../assets/images/logo.svg";
 import avatar from "../../assets/images/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
+import closeButton from "../../assets/images/closeButton.svg";
 
 export default function Header({
   onAddClothingClick,
@@ -60,14 +61,14 @@ export default function Header({
         </div>
         <div
           className={`header__modal ${
-        activeModal === "header-modal" ? "modal__is-open" : ""
-      }`}
+            activeModal === "header-modal" ? "modal__is-open" : ""
+          }`}
         >
           <button
             onClick={handleCloseActiveModal}
             className="header__modal_closeBtn"
           >
-            <img src="./src/assets/images/closeButton.svg" alt="Close button" />
+            <img src={closeButton} alt="Close menu" />
           </button>
 
           <Link className="header__profile-link" to="/profile">
