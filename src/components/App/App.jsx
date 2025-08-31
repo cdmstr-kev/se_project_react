@@ -50,7 +50,7 @@ function App() {
   const handleAddItemSubmit = (newItem) => {
     return addItem(newItem)
       .then((data) => {
-        setClothingItems([data, ...clothingItems]);
+        setClothingItems((prev) => [data, ...prev]);
         setActiveModal("");
       })
       .catch((error) => {
@@ -60,7 +60,7 @@ function App() {
 
   const handleDeleteItem = (item) => {
     deleteItem(item._id).then(() => {
-      setClothingItems(clothingItems.filter((i) => i._id !== item._id));
+      setClothingItems((prev) => prev.filter((i) => i._id !== item._id));
       setActiveModal("");
     });
   };
