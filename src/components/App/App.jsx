@@ -13,7 +13,7 @@ import {
   getWeatherForecast,
   filterWeatherData,
 } from "../../utils/weatherapi.js";
-import { coordinates, APIKey } from "../../utils/constants.js";
+import { coordinates, apiKey } from "../../utils/constants.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.js";
 import { getItems, addItem, deleteItem } from "../../utils/api.js";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal.jsx";
@@ -80,7 +80,7 @@ function App() {
   };
 
   useEffect(() => {
-    getWeatherForecast(coordinates, APIKey)
+    getWeatherForecast(coordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);

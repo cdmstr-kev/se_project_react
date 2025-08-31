@@ -1,6 +1,6 @@
 const baseUrl = "http://localhost:3001";
 
-const handleAPIResponse = (res) => {
+const handleApiResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
@@ -8,7 +8,7 @@ const handleAPIResponse = (res) => {
 };
 
 const makeRequest = (endpoint, options = {}) => {
-  return fetch(`${baseUrl}${endpoint}`, options).then(handleAPIResponse);
+  return fetch(`${baseUrl}${endpoint}`, options).then(handleApiResponse);
 };
 
 function getItems() {
@@ -31,4 +31,4 @@ function deleteItem(id) {
   });
 }
 
-export { getItems, addItem, deleteItem };
+export { getItems, addItem, deleteItem, handleApiResponse };

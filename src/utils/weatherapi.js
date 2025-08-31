@@ -1,3 +1,5 @@
+import { handleApiResponse } from "./api.js";
+
 export const getWeatherForecast = ({ latitude, longitude }, APIKey) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIKey}`
@@ -5,12 +7,14 @@ export const getWeatherForecast = ({ latitude, longitude }, APIKey) => {
     return handleApiResponse(res);
   });
 };
-
 export const filterWeatherData = (data) => {
   const result = {};
 
   result.city = data.name;
-  result.temp = { F: Math.round(data.main.temp), C: Math.round((data.main.temp - 32) * (5 / 9)) };
+  result.temp = {
+    F: Math.round(data.main.temp),
+    C: Math.round((data.main.temp - 32) * (5 / 9)),
+  };
   result.type = getWeatherType(result.temp.F);
 
   const conditionMap = {
@@ -21,7 +25,7 @@ export const filterWeatherData = (data) => {
     Mist: "fog",
     Fog: "fog",
     Haze: "fog",
-    Thunderstorm: "storm",
+    storm: "storm",
   };
 
   const apiCondition = data.weather[0].main;
@@ -47,11 +51,3 @@ const getWeatherType = (temp) => {
     return "cold";
   }
 };
-
-export default function handleApiResponse(res) {
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error: ${res.status}`);
-  }
-}
