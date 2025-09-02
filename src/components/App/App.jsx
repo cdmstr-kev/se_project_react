@@ -59,13 +59,14 @@ function App() {
   };
 
   const handleDeleteItem = (item) => {
-    deleteItem(item._id).then(() => {
-      setClothingItems((prev) => prev.filter((i) => i._id !== item._id));
-      setActiveModal("");
-    })
-    .catch((error) => {
-      console.error("Failed to delete item:", error);
-    });
+    deleteItem(item._id)
+      .then(() => {
+        setClothingItems((prev) => prev.filter((i) => i._id !== item._id));
+        setActiveModal("");
+      })
+      .catch((error) => {
+        console.error("Failed to delete item:", error);
+      });
   };
 
   const handleMobileMenuClick = () => {
@@ -75,6 +76,22 @@ function App() {
   const handleCloseActiveModal = () => {
     setActiveModal("");
   };
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
