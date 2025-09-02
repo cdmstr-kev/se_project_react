@@ -62,6 +62,9 @@ function App() {
     deleteItem(item._id).then(() => {
       setClothingItems((prev) => prev.filter((i) => i._id !== item._id));
       setActiveModal("");
+    })
+    .catch((error) => {
+      console.error("Failed to delete item:", error);
     });
   };
 
