@@ -1,6 +1,7 @@
 import closeButton from "../../assets/images/closeButtonTypePreview.svg";
 import "../ModalWithForm/ModalWithForm.css";
 import "./ItemModal.css";
+import useModalClose from "../../hooks/useModalClose";
 
 export function ItemModal({
   activeModal,
@@ -8,10 +9,11 @@ export function ItemModal({
   handleCloseActiveModal,
   onDeleteItem,
 }) {
+  const isOpen = activeModal === "preview";
+
+  useModalClose(isOpen, handleCloseActiveModal);
   return (
-    <div
-      className={`modal ${activeModal === "preview" ? "modal__is-open" : ""}`}
-    >
+    <div className={`modal ${isOpen ? "modal__is-open" : ""}`}>
       <div className="modal__content modal__content_type_image">
         <button
           className="modal__close-button modal__close-button_type_preview"

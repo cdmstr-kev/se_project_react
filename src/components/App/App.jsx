@@ -77,22 +77,6 @@ function App() {
     setActiveModal("");
   };
 
-  useEffect(() => {
-    if (!activeModal) return;
-
-    const handleEscClose = (e) => {
-      if (e.key === "Escape") {
-        handleCloseActiveModal();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscClose);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-    };
-  }, [activeModal]);
-
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);

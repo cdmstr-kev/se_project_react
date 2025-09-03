@@ -53,7 +53,7 @@
 
 .modal__close-button:hover {
   cursor: pointer;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .modal__fieldset {
@@ -109,7 +109,7 @@
 }
 
 .modal__radio-label input[type="radio"]:checked + .modal__radio-text {
-    color: rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 1);
 }
 
 .modal__input::placeholder {
