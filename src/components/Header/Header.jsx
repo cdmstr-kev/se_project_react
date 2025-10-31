@@ -11,6 +11,9 @@ export default function Header({
   activeModal,
   handleCloseActiveModal,
   onMobileMenuClick,
+  isLoggedIn,
+  handleLogInClick,
+  handleSignUpClick
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -47,17 +50,26 @@ export default function Header({
         </div>
         <div className="header__content-right">
           <ToggleSwitch />
-          <button
-            type="button"
-            className="header__button"
-            onClick={onAddClothingClick}
-          >
-            + Add Clothes
-          </button>
-          <Link className="header__profile-link" to="/profile">
-            <p className="header__username">Terrence Tegegne</p>
-            <img className="header__avatar" src={avatar} alt="Profile" />
-          </Link>
+            { isLoggedIn ?
+            <>
+                <button
+                    type="button"
+                    className="header__button"
+                    onClick={onAddClothingClick}
+                >
+                    + Add Clothes
+                </button>
+                <Link className="header__profile-link" to="/profile">
+                    <p className="header__username">Terrence Tegegne</p>
+                    <img className="header__avatar" src={avatar} alt="Profile" />
+                </Link>
+            </>
+                :
+                <>
+                <button onClick={handleSignUpClick} className="header__button header__button-authorize"> Sign Up</button>
+                <button onClick={handleLogInClick} className="header__button header__button-authorize"> Log In</button>
+                </>
+            }
         </div>
         <div
           className={`header__modal ${

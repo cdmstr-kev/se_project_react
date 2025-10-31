@@ -17,6 +17,7 @@ import { coordinates, apiKey } from "../../utils/constants.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.js";
 import { getItems, addItem, deleteItem } from "../../utils/api.js";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal.jsx";
+import RegistrationModal from "../RegistrationModal/RegistrationModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -31,6 +32,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleToggleSwitchChange = (e) => {
     currentTemperatureUnit === "F"
@@ -41,6 +43,15 @@ function App() {
   const handleAddClothingClick = () => {
     setActiveModal("add-clothing");
   };
+
+  const handleSignUpClick = () => {
+    setActiveModal("RegistrationModal");
+    console.log("Sign Up Clicked");
+  };
+
+  const handleLogInClick = () => {
+    console.log("Log In Clicked");
+  }
 
   const handleDeleteItemClick = (item) => {
     setActiveModal("delete-confirmation");
@@ -57,6 +68,11 @@ function App() {
         console.error("Failed to add item:", error);
       });
   };
+
+  const handleNewRegistration = (newItem) => {
+    console.log(newItem);
+    handleCloseActiveModal();
+  }
 
   const handleDeleteItem = (item) => {
     deleteItem(item._id)
@@ -113,6 +129,9 @@ function App() {
             activeModal={activeModal}
             handleCloseActiveModal={handleCloseActiveModal}
             onMobileMenuClick={handleMobileMenuClick}
+            isLoggedIn={isLoggedIn}
+            handleSignUpClick={handleSignUpClick}
+            handleLogInClick={handleLogInClick}
           />
           <Routes>
             <Route
@@ -145,6 +164,11 @@ function App() {
           handleCloseActiveModal={handleCloseActiveModal}
           onAddItem={handleAddItemSubmit}
           isOpen={activeModal === "add-clothing"}
+        />
+        <RegistrationModal
+            handleCloseActiveModal={handleCloseActiveModal}
+            onUserSignUp={handleNewRegistration}
+            isOpen={activeModal === "RegistrationModal"}
         />
         <ItemModal
           activeModal={activeModal}

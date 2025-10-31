@@ -1,0 +1,22 @@
+.test-class {
+  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  opacity: 0.5;
+
+  position: absolute;
+  bottom: 44px;
+  left: 126px;
+  text-decoration: none;
+}
+
+.test-class:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.modal__label_avatar {
+  margin-bottom: 22px;
+}

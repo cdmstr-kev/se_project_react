@@ -58,12 +58,17 @@
   color: #000;
   margin-right: 6px;
   padding: 0;
-  cursor: pointer;
 }
 
+.header__button-authorize {
+  margin-right: 8px;
+}
+
+/* TODO: fix the cursor */
 .header__button:hover {
   cursor: pointer;
   opacity: 0.5;
+  color: #FF4D00;
 }
 
 .header__username {
@@ -73,7 +78,7 @@
   line-height: 100%;
   letter-spacing: 0;
   margin: 0;
-  cursor: pointer;
+
   text-decoration: none;
   color: #000;
   transition: opacity 0.3s ease-in-out;
@@ -81,6 +86,7 @@
 
 .header__username:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
 
 .header__modal {
