@@ -53,9 +53,6 @@ function App() {
   const handleLogInClick = () => {
     setActiveModal("LoginModal");
     console.log("Log In Clicked");
-    // TODO This needs to be set once login is successful.
-
-    // setIsLoggedIn(true);
   }
 
   const handleDeleteItemClick = (item) => {
@@ -75,6 +72,11 @@ function App() {
   };
 
   const handleNewRegistration = (newItem) => {
+    console.log(newItem);
+    handleCloseActiveModal();
+  }
+
+  const handleLogIn = (newItem) => {
     console.log(newItem);
     handleCloseActiveModal();
   }
@@ -178,9 +180,9 @@ function App() {
         />
         <LoginModal
         handleCloseActiveModal={handleCloseActiveModal}
-        onUserLogin={handleNewRegistration}
         isOpen={activeModal === "LoginModal"}
         handleOpenRegistration={handleSignUpClick}
+        onUserLogin={handleLogIn}
         />
         <ItemModal
           activeModal={activeModal}

@@ -2,7 +2,6 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import useForm from "../../hooks/useForm.js";
 import "./LoginModal.css";
-import {Link} from "react-router-dom";
 
 const LoginModal = ({isOpen, handleCloseActiveModal, onUserLogin, handleOpenRegistration}) => {
   // TODO Work on email validation
