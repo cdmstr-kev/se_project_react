@@ -18,6 +18,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { getItems, addItem, deleteItem } from "../../utils/api.js";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal.jsx";
 import RegistrationModal from "../RegistrationModal/RegistrationModal.jsx";
+import LoginModal from "../LoginModal/LoginModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -50,7 +51,11 @@ function App() {
   };
 
   const handleLogInClick = () => {
+    setActiveModal("LoginModal");
     console.log("Log In Clicked");
+    // TODO This needs to be set once login is successful.
+
+    // setIsLoggedIn(true);
   }
 
   const handleDeleteItemClick = (item) => {
@@ -169,6 +174,13 @@ function App() {
             handleCloseActiveModal={handleCloseActiveModal}
             onUserSignUp={handleNewRegistration}
             isOpen={activeModal === "RegistrationModal"}
+            handleOpenLogin={handleLogInClick}
+        />
+        <LoginModal
+        handleCloseActiveModal={handleCloseActiveModal}
+        onUserLogin={handleNewRegistration}
+        isOpen={activeModal === "LoginModal"}
+        handleOpenRegistration={handleSignUpClick}
         />
         <ItemModal
           activeModal={activeModal}

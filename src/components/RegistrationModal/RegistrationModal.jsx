@@ -2,9 +2,9 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import useForm from "../../hooks/useForm.js";
 import "./RegistrationModal.css";
-import {Link} from "react-router-dom";
 
-const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp}) => {
+
+const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp, handleOpenLogin}) => {
   // TODO Work on email validation
   const defaultValues = {
     email: "",
@@ -98,7 +98,10 @@ const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp}) => {
               />
             </label>
           </fieldset>
-          <Link className="test-class" to={"/"}>or Log in</Link>
+          {/*// TODO rename the class from test-class to something more descriptive*/}
+          <span className="test-class" onClick={handleOpenLogin}>
+            or Log In
+          </span>
         </ModalWithForm>
     )
 }
