@@ -10,17 +10,19 @@ const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp, handle
     email: "",
     password: "",
     name: "",
-    avatarurl: "",
+    avatar: "",
   };
 
   const {values, handleChange, resetForm} = useForm(defaultValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(values);
     onUserSignUp(values)
         .then(() => {
           resetForm();
         })
+        // TODO find out if this is necessary here
         .catch((error) => {
           console.error("Failed to add item:", error);
         });
@@ -36,12 +38,12 @@ const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp, handle
             isOpen={isOpen}
         >
           <fieldset className="modal__fieldset">
-            <label htmlFor="name" className="modal__label">
+            <label htmlFor="registration-email" className="modal__label">
               Email
               <input
-                  id="email"
+                  id="registration-email"
                   className="modal__input"
-                  type="text"
+                  type="email"
                   name="email"
                   placeholder="Email"
                   required
@@ -52,10 +54,10 @@ const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp, handle
           </fieldset>
 
           <fieldset className="modal__fieldset">
-            <label htmlFor="link" className="modal__label">
+            <label htmlFor="registration-password" className="modal__label">
               Password
               <input
-                  id="password"
+                  id="registration-password"
                   className="modal__input"
                   type="password"
                   name="password"
@@ -68,10 +70,10 @@ const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp, handle
           </fieldset>
 
           <fieldset className="modal__fieldset">
-            <label htmlFor="link" className="modal__label">
+            <label htmlFor="registration-name" className="modal__label">
               Name
               <input
-                  id="name"
+                  id="registration-name"
                   className="modal__input"
                   type="text"
                   name="name"
@@ -84,14 +86,14 @@ const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp, handle
           </fieldset>
 
           <fieldset className="modal__fieldset">
-            <label htmlFor="link" className="modal__label modal__label_avatar">
+            <label htmlFor="registration-avatar" className="modal__label modal__label_avatar">
               Avatar URL
               <input
-                  id="avatarurl"
+                  id="registration-avatar"
                   className="modal__input"
                   type="url"
-                  name="avatarurl"
-                  value={values.AvatarUrl}
+                  name="avatar"
+                  value={values.avatar}
                   onChange={handleChange}
                   placeholder="Avatar URL"
                   required

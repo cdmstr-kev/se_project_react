@@ -33,12 +33,12 @@ const LoginModal = ({isOpen, handleCloseActiveModal, onUserLogin, handleOpenRegi
           isOpen={isOpen}
       >
         <fieldset className="modal__fieldset">
-          <label htmlFor="name" className="modal__label">
+          <label htmlFor="login-email" className="modal__label">
             Email
             <input
-                id="email"
+                id="login-email"
                 className="modal__input"
-                type="text"
+                type="email"
                 name="email"
                 placeholder="Email"
                 required
@@ -49,10 +49,10 @@ const LoginModal = ({isOpen, handleCloseActiveModal, onUserLogin, handleOpenRegi
         </fieldset>
 
         <fieldset className="modal__fieldset">
-          <label htmlFor="link" className="modal__label">
+          <label htmlFor="login-password" className="modal__label">
             Password
             <input
-                id="password"
+                id="login-password"
                 className="modal__input"
                 type="password"
                 name="password"

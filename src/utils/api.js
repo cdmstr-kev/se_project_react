@@ -15,19 +15,23 @@ function getItems() {
   return makeRequest("/items");
 }
 
-function addItem(item) {
+function addItem(item, token) {
   return makeRequest("/items", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(item),
   })
 }
 
-function deleteItem(id) {
+function deleteItem(id, token) {
   return makeRequest(`/items/${id}`, {
     method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
   });
 }
 

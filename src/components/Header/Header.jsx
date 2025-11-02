@@ -4,6 +4,8 @@ import logo from "../../assets/images/logo.svg";
 import avatar from "../../assets/images/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 import closeButton from "../../assets/images/closeButton.svg";
+import AppContext from "../../contexts/AppContext.js";
+import {useContext} from "react";
 
 export default function Header({
   onAddClothingClick,
@@ -19,6 +21,8 @@ export default function Header({
     month: "long",
     day: "numeric",
   });
+
+  const { userData } = useContext(AppContext);
 
   return (
     <header className="header">
@@ -60,7 +64,7 @@ export default function Header({
                     + Add Clothes
                 </button>
                 <Link className="header__profile-link" to="/profile">
-                    <p className="header__username">Terrence Tegegne</p>
+                    <p className="header__username">{userData.name}</p>
                     <img className="header__avatar" src={avatar} alt="Profile" />
                 </Link>
             </>
