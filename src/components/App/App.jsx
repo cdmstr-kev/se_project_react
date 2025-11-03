@@ -95,17 +95,22 @@ function App() {
 
     return auth.signin({ email, password})
         .then((res) => {
+          console.log("Backend response:", res)
 
           if (res.token) {
             localStorage.setItem("jwt", res.token);
-            // TODO need to revisit this user data
-            setCurrentUser(res.user);
-            setIsLoggedIn(true);
-            const redirectPath = location.state?.from?.pathname || "/Profile";
-            navigate(redirectPath);
-            handleCloseActiveModal();
+            return auth.checkToken(res.token);
           }
-        }).catch(console.error)
+        })
+    .then((userData) => {
+      setCurrentUser(userData);
+      setIsLoggedIn(true);
+      const redirectPath = location.state?.from?.pathname || "/profile";
+      navigate(redirectPath);
+      handleCloseActiveModal();
+
+    })
+    .catch(console.error)
   }
 
   const handleDeleteItem = (item) => {
