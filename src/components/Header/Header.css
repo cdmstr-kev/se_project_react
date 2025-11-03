@@ -67,7 +67,7 @@
 .header__button:hover {
   cursor: pointer;
   opacity: 0.5;
-  color: #FF4D00;
+  color: #ff4d00;
 }
 
 .header__username {
@@ -99,7 +99,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: grey;  /* Circle background color */
+  background-color: grey; /* Circle background color */
   color: white;
   font-family: "Cabinet Grotesk", Arial, sans-serif;
   font-size: 20px;

@@ -6,11 +6,11 @@ export const register = ({ email, password, name, avatar }) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({  email, password, name, avatar })
+    body: JSON.stringify({ email, password, name, avatar }),
   }).then((res) => {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
-}
+};
 
 export const signin = ({ email, password }) => {
   return fetch(`${BASE_URL}/signin`, {
@@ -18,11 +18,11 @@ export const signin = ({ email, password }) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify({ email, password }),
   }).then((res) => {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
-}
+};
 
 export const checkToken = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
@@ -30,12 +30,11 @@ export const checkToken = (token) => {
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
-    }
-  })
-      .then((res) => {
-        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-      })
-}
+    },
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
+};
 
 export const update = ({ name, avatar }) => {
   const token = localStorage.getItem("jwt");
@@ -44,10 +43,10 @@ export const update = ({ name, avatar }) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`
+      authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ name, avatar })
+    body: JSON.stringify({ name, avatar }),
   }).then((res) => {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
-}
+};

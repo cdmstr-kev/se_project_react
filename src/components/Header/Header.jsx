@@ -5,7 +5,7 @@ import avatar from "../../assets/images/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 import closeButton from "../../assets/images/closeButton.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
-import {useContext, useState} from "react";
+import { useContext, useState } from "react";
 import { getInitials } from "../../utils/helpers.js";
 
 export default function Header({
@@ -16,7 +16,7 @@ export default function Header({
   onMobileMenuClick,
   isLoggedIn,
   handleLogInClick,
-  handleSignUpClick
+  handleSignUpClick,
 }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -56,37 +56,49 @@ export default function Header({
         </div>
         <div className="header__content-right">
           <ToggleSwitch />
-            { isLoggedIn ?
+          {isLoggedIn ? (
             <>
-                <button
-                    type="button"
-                    className="header__button"
-                    onClick={onAddClothingClick}
-                >
-                    + Add Clothes
-                </button>
-                <Link className="header__profile-link" to="/profile">
-                    <p className="header__username">{currentUser.name}</p>
-                  {currentUser.avatar && loaded ? (
-                      <img
-                          className="header__avatar"
-                          src={currentUser.avatar}
-                          alt={currentUser.name || "Profile"}
-                          onLoad={() => setLoaded(true)}
-                      />
-                  ) : (
-                      <div className="header__avatar header__avatar_initials">
-                        {initials}
-                      </div>
-                  )}
-                </Link>
+              <button
+                type="button"
+                className="header__button"
+                onClick={onAddClothingClick}
+              >
+                + Add Clothes
+              </button>
+              <Link className="header__profile-link" to="/profile">
+                <p className="header__username">{currentUser.name}</p>
+                {currentUser.avatar && loaded ? (
+                  <img
+                    className="header__avatar"
+                    src={currentUser.avatar}
+                    alt={currentUser.name || "Profile"}
+                    onLoad={() => setLoaded(true)}
+                  />
+                ) : (
+                  <div className="header__avatar header__avatar_initials">
+                    {initials}
+                  </div>
+                )}
+              </Link>
             </>
-                :
-                <>
-                <button onClick={handleSignUpClick} className="header__button header__button-authorize"> Sign Up</button>
-                <button onClick={handleLogInClick} className="header__button header__button-authorize"> Log In</button>
-                </>
-            }
+          ) : (
+            <>
+              <button
+                onClick={handleSignUpClick}
+                className="header__button header__button-authorize"
+              >
+                {" "}
+                Sign Up
+              </button>
+              <button
+                onClick={handleLogInClick}
+                className="header__button header__button-authorize"
+              >
+                {" "}
+                Log In
+              </button>
+            </>
+          )}
         </div>
         <div
           className={`header__modal ${

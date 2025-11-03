@@ -12,14 +12,13 @@ export default function Main({
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
-
-
   return (
     <main className="main__container">
       <WeatherCard weatherData={weatherData} />
       <section className="cards">
         <p className="cards__text">
-          Today is {weatherData.temp[currentTemperatureUnit]}°{currentTemperatureUnit} / you may want to wear:
+          Today is {weatherData.temp[currentTemperatureUnit]}°
+          {currentTemperatureUnit} / you may want to wear:
         </p>
         <ul className="cards__list">
           {clothingItems

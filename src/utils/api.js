@@ -23,7 +23,7 @@ function addItem(item, token) {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(item),
-  })
+  });
 }
 
 function deleteItem(id, token) {
@@ -53,4 +53,11 @@ function removeCardLike(id, token) {
   });
 }
 
-export { getItems, addItem, deleteItem, handleApiResponse, addCardLike, removeCardLike };
+export {
+  getItems,
+  addItem,
+  deleteItem,
+  handleApiResponse,
+  addCardLike,
+  removeCardLike,
+};

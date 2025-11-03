@@ -12,12 +12,12 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseActiveModal }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddItem(values)
-    .then(() => {
-      resetForm();
-    })
-    .catch((error) => {
-      console.error("Failed to add item:", error);
-    });
+      .then(() => {
+        resetForm();
+      })
+      .catch((error) => {
+        console.error("Failed to add item:", error);
+      });
   };
 
   return (
