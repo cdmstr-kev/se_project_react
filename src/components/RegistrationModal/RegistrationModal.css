@@ -1,18 +1,20 @@
-.test-class {
+.registration-modal__switch {
   font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0;
   opacity: 0.5;
-
+  text-decoration: none;
+  border: none;
+  background: transparent;
   position: absolute;
   bottom: 44px;
   left: 126px;
-  text-decoration: none;
+  padding: 0;
 }
 
-.test-class:hover {
+.modal__switch:hover {
   opacity: 1;
   cursor: pointer;
 }

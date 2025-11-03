@@ -4,7 +4,6 @@ import useForm from "../../hooks/useForm.js";
 import "./LoginModal.css";
 
 const LoginModal = ({isOpen, handleCloseActiveModal, onUserLogin, handleOpenRegistration}) => {
-  // TODO Work on email validation
   const defaultValues = {
     email: "",
     password: "",
@@ -63,10 +62,9 @@ const LoginModal = ({isOpen, handleCloseActiveModal, onUserLogin, handleOpenRegi
             />
           </label>
         </fieldset>
-        {/*// TODO rename the class from test-class to something more descriptive*/}
-        <span className="test-class" onClick={handleOpenRegistration}>
+        <button className="login-modal__switch" onClick={handleOpenRegistration}>
           or Sign Up
-        </span>
+        </button>
       </ModalWithForm>
   )
 }

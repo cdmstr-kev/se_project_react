@@ -4,7 +4,6 @@ import "./RegistrationModal.css";
 
 
 const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp, handleOpenLogin}) => {
-  // TODO Work on email validation
   const defaultValues = {
     email: "",
     password: "",
@@ -21,7 +20,6 @@ const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp, handle
         .then(() => {
           resetForm();
         })
-        // TODO find out if this is necessary here
         .catch((error) => {
           console.error("Failed to add item:", error);
         });
@@ -99,10 +97,9 @@ const RegistrationModal = ({isOpen, handleCloseActiveModal, onUserSignUp, handle
               />
             </label>
           </fieldset>
-          {/*// TODO rename the class from test-class to something more descriptive*/}
-          <span className="test-class" onClick={handleOpenLogin}>
+          <button className="registration-modal__switch" onClick={handleOpenLogin}>
             or Log In
-          </span>
+          </button>
         </ModalWithForm>
     )
 }

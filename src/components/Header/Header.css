@@ -64,7 +64,6 @@
   margin-right: 8px;
 }
 
-/* TODO: fix the cursor */
 .header__button:hover {
   cursor: pointer;
   opacity: 0.5;
