@@ -1,4 +1,3 @@
-
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import useForm from "../../hooks/useForm.js";
 import "./RegistrationModal.css";

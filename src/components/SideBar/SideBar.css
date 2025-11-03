@@ -32,3 +32,32 @@
   font-weight: 700;
   text-transform: uppercase;
 }
+
+.sidebar__edit-profile {
+  margin: 24px 0 0 0;
+  width: max-content;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.sidebar__edit-profile:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.sidebar__logout {
+  margin: 8px 0 0 0;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.sidebar__logout:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

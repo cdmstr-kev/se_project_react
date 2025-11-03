@@ -1,20 +1,22 @@
 import "./SideBar.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import { getInitials } from "../../utils/helpers.js";
 
-const SideBar = () => {
+const SideBar = ({ handleEditProfileClick }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const initials = getInitials(currentUser.name);
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <div className="sidebar">
       <div className="sidebar__container">
-        {currentUser.avatar ? (
+        {currentUser.avatar && loaded ? (
             <img
                 className="sidebar__avatar"
                 src={currentUser.avatar}
                 alt={currentUser.name || "Profile"}
+                onLoad={() => setLoaded(true)}
             />
         ) : (
             <div className="sidebar__avatar sidebar__avatar_initials">
@@ -23,6 +25,8 @@ const SideBar = () => {
         )}
         <p className="sidebar__username">{currentUser.name}</p>
       </div>
+      <p onClick={ handleEditProfileClick } className="sidebar__edit-profile">Change Profile Data</p>
+      <p className="sidebar__logout">Log Out</p>
     </div>
   );
 };

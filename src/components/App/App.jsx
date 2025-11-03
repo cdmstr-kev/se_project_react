@@ -22,6 +22,7 @@ import * as auth from "../../utils/auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import AppContext from "../../contexts/AppContext.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -59,6 +60,10 @@ function App() {
     setActiveModal("LoginModal");
   }
 
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile-modal");
+  }
+
   const handleDeleteItemClick = (item) => {
     setActiveModal("delete-confirmation");
     setSelectedCard(item);
@@ -75,6 +80,21 @@ function App() {
         console.error("Failed to add item:", error);
       });
   };
+
+  const handleProfileUpdate = (updatedItem) => {
+
+    const {name, avatar} = updatedItem;
+
+    auth.update({ name, avatar })
+        .then((res) => {
+          setCurrentUser(res);
+          handleCloseActiveModal();
+        })
+        .catch(console.error)
+        .finally(() => {
+          console.log("Profile update completed");
+        });
+  }
 
   const handleNewRegistration = (newItem) => {
 
@@ -227,6 +247,7 @@ function App() {
                   handleCardClick={handleCardClick}
                   onDeleteClick={handleDeleteItemClick}
                   onAddClothingClick={handleAddClothingClick}
+                  handleEditProfileClick={handleEditProfileClick}
                 />
               </ProtectedRoute>
               }
@@ -256,6 +277,12 @@ function App() {
           selectedCard={selectedCard}
           handleCloseActiveModal={handleCloseActiveModal}
           onDeleteItem={handleDeleteItemClick}
+        />
+        <EditProfileModal
+        isOpen={activeModal === "edit-profile-modal"}
+        handleCloseActiveModal={handleCloseActiveModal}
+        onUserUpdate={handleProfileUpdate}
+        handleEditProfileClick={handleEditProfileClick}
         />
         <ConfirmationModal
           activeModal={activeModal}

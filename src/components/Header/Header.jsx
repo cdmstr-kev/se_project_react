@@ -5,7 +5,7 @@ import avatar from "../../assets/images/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 import closeButton from "../../assets/images/closeButton.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import { getInitials } from "../../utils/helpers.js";
 
 export default function Header({
@@ -24,6 +24,7 @@ export default function Header({
   });
   const { currentUser } = useContext(CurrentUserContext);
   const initials = getInitials(currentUser.name);
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <header className="header">
@@ -66,11 +67,12 @@ export default function Header({
                 </button>
                 <Link className="header__profile-link" to="/profile">
                     <p className="header__username">{currentUser.name}</p>
-                  {currentUser.avatar ? (
+                  {currentUser.avatar && loaded ? (
                       <img
                           className="header__avatar"
                           src={currentUser.avatar}
                           alt={currentUser.name || "Profile"}
+                          onLoad={() => setLoaded(true)}
                       />
                   ) : (
                       <div className="header__avatar header__avatar_initials">
