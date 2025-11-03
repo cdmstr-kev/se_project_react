@@ -81,10 +81,19 @@ function App() {
     const { email, password, name, avatar } = newItem;
     return auth.register({ email, password, name, avatar })
         .then(() => {
-          navigate("/");
+          return auth.signin({email, password});
+        }).then((res) => {
+          if (res.token) {
+            localStorage.setItem("jwt", res.token);
+            return auth.checkToken(res.token);
+          }
+        }).then((userData) => {
+          setCurrentUser(userData);
           setIsLoggedIn(true);
           handleCloseActiveModal();
-        }).catch(console.error)
+          navigate("/");
+        })
+        .catch(console.error)
   }
 
   const handleLogIn = ({email, password}) => {
