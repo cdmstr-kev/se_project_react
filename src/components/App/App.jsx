@@ -19,6 +19,7 @@ import ConfirmationModal from "../ConfirmationModal/ConfirmationModal.jsx";
 import RegistrationModal from "../RegistrationModal/RegistrationModal.jsx";
 import LoginModal from "../LoginModal/LoginModal.jsx";
 import * as auth from "../../utils/auth.js";
+import * as api from "../../utils/api.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import AppContext from "../../contexts/AppContext.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
@@ -154,6 +155,30 @@ function App() {
       });
   };
 
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+
+    !isLiked
+        ?
+        api
+            .addCardLike(id, token)
+            .then((updatedCard) => {
+              setClothingItems((cards) =>
+                  cards.map((item) => (item._id === id ? updatedCard : item))
+              );
+            })
+            .catch((err) => console.log(err))
+        :
+        api
+            .removeCardLike(id, token)
+            .then((updatedCard) => {
+              setClothingItems((cards) =>
+                  cards.map((item) => (item._id === id ? updatedCard : item))
+              );
+            })
+            .catch((err) => console.log(err));
+  };
+
   const handleMobileMenuClick = () => {
     setActiveModal("header-modal");
   };
@@ -208,7 +233,7 @@ function App() {
   }, []);
 
   return (
-      <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, isLoading }}>
+      <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, isLoading, clothingItems }}>
         <CurrentUserContext.Provider value={{ currentUser }}>
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -234,6 +259,7 @@ function App() {
                   setClothingItems={setClothingItems}
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
                 />
               }
             />
@@ -248,6 +274,7 @@ function App() {
                   onDeleteClick={handleDeleteItemClick}
                   onAddClothingClick={handleAddClothingClick}
                   handleEditProfileClick={handleEditProfileClick}
+                  onCardLike={handleCardLike}
                 />
               </ProtectedRoute>
               }

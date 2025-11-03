@@ -8,8 +8,11 @@ export default function Main({
   clothingItems,
   weatherData,
   handleCardClick,
+  onCardLike,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+
+
 
   return (
     <main className="main__container">
@@ -28,6 +31,7 @@ export default function Main({
                 key={item._id}
                 item={item}
                 onCardClick={handleCardClick}
+                onCardLike={onCardLike}
               />
             ))}
         </ul>

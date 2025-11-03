@@ -35,4 +35,22 @@ function deleteItem(id, token) {
   });
 }
 
-export { getItems, addItem, deleteItem, handleApiResponse };
+function addCardLike(id, token) {
+  return makeRequest(`/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+function removeCardLike(id, token) {
+  return makeRequest(`/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export { getItems, addItem, deleteItem, handleApiResponse, addCardLike, removeCardLike };
