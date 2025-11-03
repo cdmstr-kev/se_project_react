@@ -1,16 +1,27 @@
 import "./SideBar.css";
-import avatar from "../../assets/images/avatar.png";
-import AppContext  from "../../contexts/AppContext.js";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import {useContext} from "react";
+import { getInitials } from "../../utils/helpers.js";
 
 const SideBar = () => {
-  const { userData } = useContext(AppContext);
+  const { currentUser } = useContext(CurrentUserContext);
+  const initials = getInitials(currentUser.name);
 
   return (
     <div className="sidebar">
       <div className="sidebar__container">
-        <img className="sidebar__avatar" src={avatar} alt="Profile" />
-        <p className="sidebar__username">{userData.name}</p>
+        {currentUser.avatar ? (
+            <img
+                className="sidebar__avatar"
+                src={currentUser.avatar}
+                alt={currentUser.name || "Profile"}
+            />
+        ) : (
+            <div className="sidebar__avatar sidebar__avatar_initials">
+              {initials}
+            </div>
+        )}
+        <p className="sidebar__username">{currentUser.name}</p>
       </div>
     </div>
   );

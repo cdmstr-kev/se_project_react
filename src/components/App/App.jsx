@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import {Routes, Route, useNavigate} from "react-router-dom";
 
 import "./App.css";
@@ -22,6 +21,7 @@ import LoginModal from "../LoginModal/LoginModal.jsx";
 import * as auth from "../../utils/auth.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import AppContext from "../../contexts/AppContext.js";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -36,9 +36,9 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [userData, setUserData] = useState({username: "", email: ""})
+  const [currentUser, setCurrentUser] = useState({name: "", email: ""})
   const navigate = useNavigate();
 
   const handleToggleSwitchChange = (e) => {
@@ -99,7 +99,7 @@ function App() {
           if (res.token) {
             localStorage.setItem("jwt", res.token);
             // TODO need to revisit this user data
-            setUserData(res.user);
+            setCurrentUser(res.user);
             setIsLoggedIn(true);
             const redirectPath = location.state?.from?.pathname || "/Profile";
             navigate(redirectPath);
@@ -163,7 +163,7 @@ function App() {
     auth.checkToken(token)
     .then((data) => {
       setIsLoggedIn(true);
-      setUserData(data)
+      setCurrentUser(data)
       setIsLoading(false)
     })
     .catch((error) => {
@@ -174,7 +174,8 @@ function App() {
   }, []);
 
   return (
-      <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, userData, isLoading }}>
+      <AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, isLoading }}>
+        <CurrentUserContext.Provider value={{ currentUser }}>
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
@@ -250,6 +251,7 @@ function App() {
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
+          </CurrentUserContext.Provider>
         </AppContext.Provider>
   );
 }
