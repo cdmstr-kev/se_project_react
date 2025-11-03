@@ -143,6 +143,13 @@ function App() {
     .catch(console.error)
   }
 
+  const handleLogOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser({name: "", email: ""});
+    navigate("/");
+  }
+
   const handleDeleteItem = (item) => {
     const token = localStorage.getItem("jwt");
     deleteItem(item._id, token)
@@ -275,6 +282,7 @@ function App() {
                   onAddClothingClick={handleAddClothingClick}
                   handleEditProfileClick={handleEditProfileClick}
                   onCardLike={handleCardLike}
+                  handleLogOut={handleLogOut}
                 />
               </ProtectedRoute>
               }

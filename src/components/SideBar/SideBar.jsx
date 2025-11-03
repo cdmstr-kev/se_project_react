@@ -3,10 +3,14 @@ import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import {useContext, useState} from "react";
 import { getInitials } from "../../utils/helpers.js";
 
-const SideBar = ({ handleEditProfileClick }) => {
+const SideBar = ({ handleEditProfileClick, handleLogOut }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const initials = getInitials(currentUser.name);
   const [loaded, setLoaded] = useState(false);
+
+  const handleLogoutClick = () => {
+    handleLogOut();
+  }
 
   return (
     <div className="sidebar">
@@ -26,7 +30,7 @@ const SideBar = ({ handleEditProfileClick }) => {
         <p className="sidebar__username">{currentUser.name}</p>
       </div>
       <p onClick={ handleEditProfileClick } className="sidebar__edit-profile">Change Profile Data</p>
-      <p className="sidebar__logout">Log Out</p>
+      <p onClick={handleLogoutClick} className="sidebar__logout">Log Out</p>
     </div>
   );
 };
