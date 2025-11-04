@@ -17,10 +17,16 @@ export default function Header({
   handleLogInClick,
   handleSignUpClick,
   handleLogOut,
+  handleEditProfileClick,
 }) {
   const handleLogoutClick = () => {
     handleLogOut();
   };
+
+  const handleEditProfile = () => {
+    handleEditProfileClick();
+  };
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -66,7 +72,12 @@ export default function Header({
                 <p className="header__mobile-menu-username">
                   {currentUser.name}
                 </p>
-                <p className="header__mobile-menu-text">Change profile data</p>
+                <p
+                  onClick={handleEditProfile}
+                  className="header__mobile-menu-text"
+                >
+                  Change Profile data
+                </p>
                 <p
                   onClick={handleLogoutClick}
                   className="header__mobile-menu-logout"
@@ -135,49 +146,47 @@ export default function Header({
             <img src={closeButton} alt="Close menu" />
           </button>
 
-          <Link className="header__profile-link" to="/profile">
-            {isLoggedIn ? (
-              <>
-                {currentUser.avatar && !imageError ? (
-                  <img
-                    className="sidebar__avatar"
-                    src={currentUser.avatar}
-                    alt={currentUser.name || "Profile"}
-                    onError={() => setImageError(true)}
-                  />
-                ) : (
-                  <div className="sidebar__avatar sidebar__avatar_initials">
-                    {initials}
-                  </div>
-                )}
-                <p className="header__mobile-menu-username">
-                  {currentUser.name}
-                </p>
-              </>
-            ) : (
-              <>
-                <p
-                  onClick={handleSignUpClick}
-                  className="header__mobile-menu-text"
-                >
-                  Sign Up
-                </p>
-                <p
-                  onClick={handleLogInClick}
-                  className="header__mobile-menu-text"
-                >
-                  Log In
-                </p>
-              </>
-            )}
-          </Link>
-          <button
-            type="button"
-            className="header__button"
-            onClick={onAddClothingClick}
-          >
-            + Add Clothes
-          </button>
+          {isLoggedIn ? (
+            <Link className="header__profile-link" to="/profile">
+              {currentUser.avatar && !imageError ? (
+                <img
+                  className="sidebar__avatar"
+                  src={currentUser.avatar}
+                  alt={currentUser.name || "Profile"}
+                  onError={() => setImageError(true)}
+                />
+              ) : (
+                <div className="sidebar__avatar sidebar__avatar_initials">
+                  {initials}
+                </div>
+              )}
+              <p className="header__mobile-menu-username">{currentUser.name}</p>
+            </Link>
+          ) : (
+            <div className="header__profile-link">
+              <p
+                onClick={handleSignUpClick}
+                className="header__mobile-menu-text"
+              >
+                Sign Up
+              </p>
+              <p
+                onClick={handleLogInClick}
+                className="header__mobile-menu-text"
+              >
+                Log In
+              </p>
+            </div>
+          )}
+          {isLoggedIn && (
+            <button
+              type="button"
+              className="header__button"
+              onClick={onAddClothingClick}
+            >
+              + Add Clothes
+            </button>
+          )}
 
           <ToggleSwitch />
         </div>

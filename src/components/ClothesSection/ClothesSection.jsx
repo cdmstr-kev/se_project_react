@@ -33,6 +33,7 @@ const ClothesSection = ({
               item={item}
               onCardClick={handleCardClick}
               onCardLike={onCardLike}
+              isLoggedIn={true}
             />
           ))}
         </ul>

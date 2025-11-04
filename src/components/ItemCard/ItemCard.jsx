@@ -5,7 +5,12 @@ import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
 import { useContext } from "react";
 
-export default function ItemCard({ item, onCardClick, onCardLike }) {
+export default function ItemCard({
+  item,
+  onCardClick,
+  onCardLike,
+  isLoggedIn,
+}) {
   const { currentUser } = useContext(CurrentUserContext);
 
   const userLiked = item.likes.includes(currentUser._id);
@@ -15,6 +20,10 @@ export default function ItemCard({ item, onCardClick, onCardLike }) {
   };
 
   const handleLike = () => {
+    // Guard: only proceed if user is logged in
+    if (!isLoggedIn) {
+      return;
+    }
     onCardLike({ id: item._id, isLiked: userLiked });
   };
 
@@ -22,12 +31,14 @@ export default function ItemCard({ item, onCardClick, onCardLike }) {
     <li className="card">
       <div className={"card__title-container"}>
         <p className="card__text">{item.name}</p>
-        <img
-          onClick={handleLike}
-          className="card__like-btn"
-          src={userLiked === true ? liked : notLiked}
-          alt="heartIcon"
-        />
+        {isLoggedIn && (
+          <img
+            onClick={handleLike}
+            className="card__like-btn"
+            src={userLiked === true ? liked : notLiked}
+            alt="heartIcon"
+          />
+        )}
       </div>
       <img
         onClick={handleClick}

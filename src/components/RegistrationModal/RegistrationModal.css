@@ -1,5 +1,5 @@
 .registration-modal__switch {
-  font-family: "Cabinet-Grotesk", Arial, Helvetica, sans-serif;
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
@@ -14,7 +14,7 @@
   padding: 0;
 }
 
-.modal__switch:hover {
+.registration-modal__switch:hover {
   opacity: 1;
   cursor: pointer;
 }

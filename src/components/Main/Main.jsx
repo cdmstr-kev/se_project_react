@@ -9,6 +9,7 @@ export default function Main({
   weatherData,
   handleCardClick,
   onCardLike,
+  isLoggedIn,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -31,6 +32,7 @@ export default function Main({
                 item={item}
                 onCardClick={handleCardClick}
                 onCardLike={onCardLike}
+                isLoggedIn={isLoggedIn}
               />
             ))}
         </ul>

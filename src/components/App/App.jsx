@@ -135,8 +135,7 @@ function App() {
       .then((userData) => {
         setCurrentUser(userData);
         setIsLoggedIn(true);
-        const redirectPath = location.state?.from?.pathname || "/profile";
-        navigate(redirectPath);
+        navigate("/");
         handleCloseActiveModal();
       })
       .catch(console.error);
@@ -163,6 +162,11 @@ function App() {
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
+
+    // Early return if no token - user must be logged in to like items
+    if (!token) {
+      return;
+    }
 
     !isLiked
       ? api
@@ -257,6 +261,7 @@ function App() {
                 handleSignUpClick={handleSignUpClick}
                 handleLogInClick={handleLogInClick}
                 handleLogOut={handleLogOut}
+                handleEditProfileClick={handleEditProfileClick}
               />
               <Routes>
                 <Route
@@ -268,6 +273,7 @@ function App() {
                       weatherData={weatherData}
                       handleCardClick={handleCardClick}
                       onCardLike={handleCardLike}
+                      isLoggedIn={isLoggedIn}
                     />
                   }
                 />
