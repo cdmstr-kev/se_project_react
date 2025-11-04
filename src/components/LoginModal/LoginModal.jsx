@@ -66,7 +66,11 @@ const LoginModal = ({
           />
         </label>
       </fieldset>
-      <button className="login-modal__switch" onClick={handleOpenRegistration}>
+      <button
+        type="button"
+        className="login-modal__switch"
+        onClick={handleOpenRegistration}
+      >
         or Sign Up
       </button>
     </ModalWithForm>
