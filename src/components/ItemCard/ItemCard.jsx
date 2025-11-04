@@ -20,7 +20,7 @@ export default function ItemCard({
   };
 
   const handleLike = () => {
-    // Guard: only proceed if user is logged in
+
     if (!isLoggedIn) {
       return;
     }

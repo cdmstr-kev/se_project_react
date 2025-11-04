@@ -163,7 +163,7 @@ function App() {
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
 
-    // Early return if no token - user must be logged in to like items
+
     if (!token) {
       return;
     }
