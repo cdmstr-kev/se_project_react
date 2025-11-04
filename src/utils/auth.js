@@ -1,3 +1,5 @@
+import { handleApiResponse } from "./api.js";
+
 const BASE_URL = "http://localhost:3001";
 
 export const register = ({ email, password, name, avatar }) => {
@@ -8,7 +10,7 @@ export const register = ({ email, password, name, avatar }) => {
     },
     body: JSON.stringify({ email, password, name, avatar }),
   }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    handleApiResponse(res);
   });
 };
 
@@ -20,7 +22,7 @@ export const signin = ({ email, password }) => {
     },
     body: JSON.stringify({ email, password }),
   }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    return handleApiResponse(res);
   });
 };
 
@@ -32,7 +34,7 @@ export const checkToken = (token) => {
       authorization: `Bearer ${token}`,
     },
   }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    return handleApiResponse(res);
   });
 };
 
@@ -47,6 +49,6 @@ export const update = ({ name, avatar }) => {
     },
     body: JSON.stringify({ name, avatar }),
   }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    return handleApiResponse(res);
   });
 };
