@@ -127,8 +127,6 @@ function App() {
     return auth
       .signin({ email, password })
       .then((res) => {
-        console.log("Backend response:", res);
-
         if (res.token) {
           localStorage.setItem("jwt", res.token);
           return auth.checkToken(res.token);
@@ -258,6 +256,7 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 handleSignUpClick={handleSignUpClick}
                 handleLogInClick={handleLogInClick}
+                handleLogOut={handleLogOut}
               />
               <Routes>
                 <Route

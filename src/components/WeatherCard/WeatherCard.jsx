@@ -28,7 +28,7 @@ export default function WeatherCard({ weatherData }) {
       <img
         className="weather-card__image"
         src={weatherOption.url}
-        alt={weatherOption.condition}
+        alt={weatherOption.condition || "Weather Condition"}
       />
     </section>
   );

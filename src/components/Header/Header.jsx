@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/images/logo.svg";
-import avatar from "../../assets/images/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 import closeButton from "../../assets/images/closeButton.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
@@ -17,14 +16,18 @@ export default function Header({
   isLoggedIn,
   handleLogInClick,
   handleSignUpClick,
+  handleLogOut,
 }) {
+  const handleLogoutClick = () => {
+    handleLogOut();
+  };
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
   const { currentUser } = useContext(CurrentUserContext);
   const initials = getInitials(currentUser.name);
-  const [loaded, setLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   return (
     <header className="header">
@@ -43,15 +46,35 @@ export default function Header({
           ></button>
         </div>
         <div className="header__mobile-menu">
-          <img
-            className="header__mobile-menu-avatar"
-            src={avatar}
-            alt="Profile"
-          />
+          {isLoggedIn &&
+            (currentUser.avatar && !imageError ? (
+              <img
+                className="sidebar__avatar"
+                src={currentUser.avatar}
+                alt={currentUser.name || "Profile"}
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              <div className="sidebar__avatar sidebar__avatar_initials">
+                {initials}
+              </div>
+            ))}
+
           <div className="header__mobile-menu-content">
-            <p className="header__mobile-menu-username">Terrence Tegegne</p>
-            <p className="header__mobile-menu-text">Change profile data</p>
-            <p className="header__mobile-menu-logout">Log Out</p>
+            {isLoggedIn ? (
+              <>
+                <p className="header__mobile-menu-username">
+                  {currentUser.name}
+                </p>
+                <p className="header__mobile-menu-text">Change profile data</p>
+                <p
+                  onClick={handleLogoutClick}
+                  className="header__mobile-menu-logout"
+                >
+                  Log Out
+                </p>
+              </>
+            ) : null}
           </div>
         </div>
         <div className="header__content-right">
@@ -67,15 +90,15 @@ export default function Header({
               </button>
               <Link className="header__profile-link" to="/profile">
                 <p className="header__username">{currentUser.name}</p>
-                {currentUser.avatar && loaded ? (
+                {currentUser.avatar && !imageError ? (
                   <img
-                    className="header__avatar"
+                    className="sidebar__avatar"
                     src={currentUser.avatar}
                     alt={currentUser.name || "Profile"}
-                    onLoad={() => setLoaded(true)}
+                    onError={() => setImageError(true)}
                   />
                 ) : (
-                  <div className="header__avatar header__avatar_initials">
+                  <div className="sidebar__avatar sidebar__avatar_initials">
                     {initials}
                   </div>
                 )}
@@ -113,8 +136,40 @@ export default function Header({
           </button>
 
           <Link className="header__profile-link" to="/profile">
-            <p className="header__username">Terrence Tegegne</p>
-            <img className="header__avatar" src={avatar} alt="Profile" />
+            {isLoggedIn ? (
+              <>
+                {currentUser.avatar && !imageError ? (
+                  <img
+                    className="sidebar__avatar"
+                    src={currentUser.avatar}
+                    alt={currentUser.name || "Profile"}
+                    onError={() => setImageError(true)}
+                  />
+                ) : (
+                  <div className="sidebar__avatar sidebar__avatar_initials">
+                    {initials}
+                  </div>
+                )}
+                <p className="header__mobile-menu-username">
+                  {currentUser.name}
+                </p>
+              </>
+            ) : (
+              <>
+                <p
+                  onClick={handleSignUpClick}
+                  className="header__mobile-menu-text"
+                >
+                  Sign Up
+                </p>
+                <p
+                  onClick={handleLogInClick}
+                  className="header__mobile-menu-text"
+                >
+                  Log In
+                </p>
+              </>
+            )}
           </Link>
           <button
             type="button"
@@ -123,6 +178,7 @@ export default function Header({
           >
             + Add Clothes
           </button>
+
           <ToggleSwitch />
         </div>
       </div>
