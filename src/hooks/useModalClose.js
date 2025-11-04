@@ -11,7 +11,6 @@ function useModalClose(isOpen, onClose) {
     };
 
     const handleOverlay = (e) => {
-
       if (e.target.classList.contains("modal")) {
         onClose();
       }
@@ -19,7 +18,6 @@ function useModalClose(isOpen, onClose) {
 
     document.addEventListener("keydown", handleEscape);
     document.addEventListener("mousedown", handleOverlay);
-
 
     return () => {
       document.removeEventListener("keydown", handleEscape);

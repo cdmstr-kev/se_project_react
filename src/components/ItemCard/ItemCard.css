@@ -1,9 +1,9 @@
 .card {
   display: flex;
   justify-content: center;
-  max-width: 325px;
   height: 328px;
   position: relative;
+  width: 325px;
 }
 
 .card__text {
