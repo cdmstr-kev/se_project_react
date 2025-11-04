@@ -24,11 +24,15 @@
 
 .header__profile-link {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 12px;
   text-decoration: none;
   color: inherit;
+}
+
+.header__profile-link_type_mobile {
+  flex-direction: column;
+
 }
 
 .header__content-right {
