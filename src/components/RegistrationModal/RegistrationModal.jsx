@@ -1,6 +1,8 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import useForm from "../../hooks/useForm.js";
 import "./RegistrationModal.css";
+import { useContext } from "react";
+import AppContext from "../../contexts/AppContext.js";
 
 const RegistrationModal = ({
   isOpen,
@@ -14,11 +16,12 @@ const RegistrationModal = ({
     name: "",
     avatar: "",
   };
-
+  const { isLoading, setIsLoading } = useContext(AppContext);
   const { values, handleChange, resetForm } = useForm(defaultValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     console.log(values);
     onUserSignUp(values)
       .then(() => {
@@ -26,12 +29,15 @@ const RegistrationModal = ({
       })
       .catch((error) => {
         console.error("Failed to add item:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   return (
     <ModalWithForm
-      buttonText="Sign Up"
+      buttonText={isLoading ? "Signing Up..." : "Sign Up"}
       title="Sign Up"
       handleCloseActiveModal={handleCloseActiveModal}
       onSubmit={handleSubmit}
@@ -104,13 +110,15 @@ const RegistrationModal = ({
           />
         </label>
       </fieldset>
-      <button
-        type="button"
-        className="registration-modal__switch"
-        onClick={handleOpenLogin}
-      >
-        or Log In
-      </button>
+      {!isLoading && (
+        <button
+          type="button"
+          className="registration-modal__switch"
+          onClick={handleOpenLogin}
+        >
+          or Log In
+        </button>
+      )}
     </ModalWithForm>
   );
 };

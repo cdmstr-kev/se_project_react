@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3001';
+const baseUrl = "http://localhost:3001";
 
 const handleApiResponse = (res) => {
   if (res.ok) {
@@ -12,14 +12,14 @@ const makeRequest = (endpoint, options = {}) => {
 };
 
 function getItems() {
-  return makeRequest('/items');
+  return makeRequest("/items");
 }
 
 function addItem(item, token) {
-  return makeRequest('/items', {
-    method: 'POST',
+  return makeRequest("/items", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(item),
@@ -28,7 +28,7 @@ function addItem(item, token) {
 
 function deleteItem(id, token) {
   return makeRequest(`/items/${id}`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
       authorization: `Bearer ${token}`,
     },
@@ -37,7 +37,7 @@ function deleteItem(id, token) {
 
 function addCardLike(id, token) {
   return makeRequest(`/items/${id}/likes`, {
-    method: 'PUT',
+    method: "PUT",
     headers: {
       authorization: `Bearer ${token}`,
     },
@@ -46,7 +46,7 @@ function addCardLike(id, token) {
 
 function removeCardLike(id, token) {
   return makeRequest(`/items/${id}/likes`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
       authorization: `Bearer ${token}`,
     },

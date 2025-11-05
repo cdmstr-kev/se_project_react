@@ -20,7 +20,6 @@ export default function ItemCard({
   };
 
   const handleLike = () => {
-
     if (!isLoggedIn) {
       return;
     }

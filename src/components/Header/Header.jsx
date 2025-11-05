@@ -147,7 +147,10 @@ export default function Header({
           </button>
 
           {isLoggedIn ? (
-            <Link className="header__profile-link header__profile-link_type_mobile" to="/profile">
+            <Link
+              className="header__profile-link header__profile-link_type_mobile"
+              to="/profile"
+            >
               {currentUser.avatar && !imageError ? (
                 <img
                   className="sidebar__avatar"

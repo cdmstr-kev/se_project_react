@@ -1,6 +1,8 @@
 import closeButton from "../../assets/images/closeButton.svg";
 import "./ModalWithForm.css";
 import useModalClose from "../../hooks/useModalClose";
+import AppContext from "../../contexts/AppContext.js";
+import { useContext } from "react";
 
 export default function ModalWithForm({
   children,
@@ -12,6 +14,8 @@ export default function ModalWithForm({
   onSubmit,
 }) {
   useModalClose(isOpen, handleCloseActiveModal);
+
+  const { isLoading } = useContext(AppContext);
 
   return (
     <div

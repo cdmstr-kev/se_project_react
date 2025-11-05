@@ -39,7 +39,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({ name: "", email: "" });
   const navigate = useNavigate();
 
@@ -163,7 +163,6 @@ function App() {
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
 
-
     if (!token) {
       return;
     }
@@ -243,7 +242,13 @@ function App() {
 
   return (
     <AppContext.Provider
-      value={{ isLoggedIn, setIsLoggedIn, isLoading, clothingItems }}
+      value={{
+        isLoggedIn,
+        setIsLoggedIn,
+        isLoading,
+        setIsLoading,
+        clothingItems,
+      }}
     >
       <CurrentUserContext.Provider value={{ currentUser }}>
         <CurrentTemperatureUnitContext.Provider

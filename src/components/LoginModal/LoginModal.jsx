@@ -1,6 +1,8 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import useForm from "../../hooks/useForm.js";
 import "./LoginModal.css";
+import AppContext from "../../contexts/AppContext.js";
+import { useContext } from "react";
 
 const LoginModal = ({
   isOpen,
@@ -13,22 +15,27 @@ const LoginModal = ({
     password: "",
   };
 
+  const { isLoading, setIsLoading } = useContext(AppContext);
   const { values, handleChange, resetForm } = useForm(defaultValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     onUserLogin(values)
       .then(() => {
         resetForm();
       })
       .catch((error) => {
-        console.error("Failed to add item:", error);
+        console.error("Failed to log in:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   return (
     <ModalWithForm
-      buttonText="Log In"
+      buttonText={isLoading ? "Logging In..." : "Log In"}
       title="Log In"
       handleCloseActiveModal={handleCloseActiveModal}
       onSubmit={handleSubmit}
@@ -66,13 +73,16 @@ const LoginModal = ({
           />
         </label>
       </fieldset>
-      <button
-        type="button"
-        className="login-modal__switch"
-        onClick={handleOpenRegistration}
-      >
-        or Sign Up
-      </button>
+
+      {!isLoading && (
+        <button
+          type="button"
+          className="login-modal__switch"
+          onClick={handleOpenRegistration}
+        >
+          or Sign Up
+        </button>
+      )}
     </ModalWithForm>
   );
 };
