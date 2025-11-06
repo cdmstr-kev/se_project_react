@@ -1,8 +1,5 @@
-import closeButton from "../../assets/images/closeButton.svg";
+import { Modal } from "../Modal/Modal.jsx";
 import "./ModalWithForm.css";
-import useModalClose from "../../hooks/useModalClose";
-import AppContext from "../../contexts/AppContext.js";
-import { useContext } from "react";
 
 export default function ModalWithForm({
   children,
@@ -13,30 +10,15 @@ export default function ModalWithForm({
   handleCloseActiveModal,
   onSubmit,
 }) {
-  useModalClose(isOpen, handleCloseActiveModal);
-
-  const { isLoading } = useContext(AppContext);
-
   return (
-    <div
-      className={`modal ${isOpen ? "modal__is-open" : ""} modal__type_${name}`}
-    >
-      <div className="modal__content">
-        <h2 className="modal__title">{title}</h2>
-        <button
-          className="modal__close-button"
-          type="button"
-          onClick={handleCloseActiveModal}
-        >
-          <img src={closeButton} alt="Close" />
+    <Modal name={name} onClose={handleCloseActiveModal} isOpen={isOpen}>
+      <h2 className="modal__title">{title}</h2>
+      <form className="modal__form" onSubmit={onSubmit}>
+        {children}
+        <button className="modal__submit-button" type="submit">
+          {buttonText}
         </button>
-        <form className="modal__form" onSubmit={onSubmit}>
-          {children}
-          <button className="modal__submit-button" type="submit">
-            {buttonText}
-          </button>
-        </form>
-      </div>
-    </div>
+      </form>
+    </Modal>
   );
 }

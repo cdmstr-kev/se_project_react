@@ -1,6 +1,4 @@
-/* @import "../ModalWithForm/ModalWithForm.css"; */
-
-.modal__content_type_confirmation {
+.modal__container_type_confirmation {
   padding: 28px;
   max-width: 670px;
 }
