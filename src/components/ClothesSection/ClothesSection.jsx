@@ -19,6 +19,7 @@ const ClothesSection = ({
       <div className="clothes-section__title-container">
         <h2 className="clothes-section__title">Your items</h2>
         <button
+          type={"button"}
           onClick={handleAddClick}
           className="clothes-section__add-button"
         >

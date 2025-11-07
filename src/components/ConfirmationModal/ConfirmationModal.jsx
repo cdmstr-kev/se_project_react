@@ -27,12 +27,14 @@ const ConfirmationModal = ({
       </p>
       <div className="modal__buttons">
         <button
+          type={"button"}
           className="modal__button modal__button_type_confirm"
           onClick={handleConfirm}
         >
           Yes, delete it
         </button>
         <button
+          type={"button"}
           className="modal__button modal__button_type_cancel"
           onClick={handleCloseActiveModal}
         >

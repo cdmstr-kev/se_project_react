@@ -118,6 +118,7 @@ export default function Header({
           ) : (
             <>
               <button
+                type={"button"}
                 onClick={handleSignUpClick}
                 className="header__button header__button-authorize"
               >
@@ -125,6 +126,7 @@ export default function Header({
                 Sign Up
               </button>
               <button
+                type={"button"}
                 onClick={handleLogInClick}
                 className="header__button header__button-authorize"
               >
@@ -140,6 +142,7 @@ export default function Header({
           }`}
         >
           <button
+            type={"button"}
             onClick={handleCloseActiveModal}
             className="header__modal_closeBtn"
           >
