@@ -1,4 +1,9 @@
-const baseUrl = "http://localhost:3001";
+/* global process */
+
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwrcdmstr.jumpingcrab.com"
+    : "http://localhost:3001";
 
 const handleApiResponse = (res) => {
   if (res.ok) {

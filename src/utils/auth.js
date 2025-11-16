@@ -1,6 +1,10 @@
+/* global process */
 import { handleApiResponse } from "./api.js";
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwrcdmstr.jumpingcrab.com"
+    : "http://localhost:3001";
 
 export const register = ({ email, password, name, avatar }) => {
   return fetch(`${BASE_URL}/signup`, {
