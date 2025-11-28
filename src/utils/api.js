@@ -2,7 +2,7 @@
 
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://api.wtwrcdmstr.jumpingcrab.com"
+    ? "https://api.what2wear.cdmstr.com"
     : "http://localhost:3001";
 
 const handleApiResponse = (res) => {
