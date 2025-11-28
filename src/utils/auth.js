@@ -3,7 +3,7 @@ import { handleApiResponse } from "./api.js";
 
 const BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "https://api.wtwrcdmstr.jumpingcrab.com"
+    ? "https://api.what2wear.cdmstr.com"
     : "http://localhost:3001";
 
 export const register = ({ email, password, name, avatar }) => {
