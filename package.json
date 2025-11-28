@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://wtwrcdmstr.jumpingcrab.com",
+  "homepage": "https://what2wear.cdmstr.com",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
